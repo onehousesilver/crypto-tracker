@@ -20,10 +20,11 @@ const Header = styled.header`
 const CoinList = styled.ul``;
 
 const Coin = styled.li`
-  background-color: white;
-  color: ${(props) => props.theme.bgColor};
+  background-color: ${(props) => props.theme.cardBgColor};
+  color: ${(props) => props.theme.textColor};
   border-radius: 15px;
   margin-bottom: 10px;
+  border: 1px solid white;
   a {
     padding: 20px;
     transition: color 0.2s ease-in;
@@ -39,6 +40,7 @@ const Coin = styled.li`
 
 const Title = styled.h1`
   font-size: 48px;
+  font-weight: 700;
   color: ${(props) => props.theme.accentColor};
 `;
 
@@ -65,7 +67,7 @@ interface CoinInterface {
 }
 
 function Coins() {
-  const { isLoading, data} = useQuery<CoinInterface[]>("allCoins", fetchCoins)
+  const { isLoading, data } = useQuery<CoinInterface[]>("allCoins", fetchCoins);
   // const [coins, setCoins] = useState<CoinInterface[]>([]);
   // const [loading, setLoading] = useState(true);
 
@@ -80,10 +82,10 @@ function Coins() {
   return (
     <Container>
       <Helmet>
-        <title>Coin💰</title>
+        <title>Coin</title>
       </Helmet>
       <Header>
-        <Title>Coin💰</Title>
+        <Title>Coin</Title>
       </Header>
       {isLoading ? (
         <Loader>Loading...</Loader>
@@ -99,7 +101,7 @@ function Coins() {
                   src={`https://cryptoicon-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
                   alt="symbol"
                 />
-                {coin.name} &rarr;
+                {coin.name}
               </Link>
             </Coin>
           ))}

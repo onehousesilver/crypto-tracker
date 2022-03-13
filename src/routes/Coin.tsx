@@ -22,6 +22,7 @@ const Header = styled.header`
 
 const Title = styled.h1`
   font-size: 48px;
+  font-weight: 700;
   color: ${(props) => props.theme.accentColor};
 `;
 
@@ -207,7 +208,7 @@ function Coin() {
             </OverviewItem>
             <OverviewItem>
               <span>Price</span>
-              <span>${tickersData?.quotes.USD.price.toFixed(3)}</span>
+              <span>${tickersData?.quotes?.USD?.price?.toFixed(3)}</span>
             </OverviewItem>
           </Overview>
           <Description>{infoData?.description}</Description>
@@ -217,7 +218,7 @@ function Coin() {
               <span>{tickersData?.total_supply}</span>
             </OverviewItem>
             <OverviewItem>
-              <span>Max Supply:</span>
+              <span>Max Supply</span>
               <span>{tickersData?.max_supply}</span>
             </OverviewItem>
           </Overview>
@@ -233,7 +234,7 @@ function Coin() {
             <Link to="/"> Go Main</Link>
           </GoMain>
           <Routes>
-            <Route path="price" element={<Price />} />
+            <Route path="price" element={<Price />}/>
             <Route path="chart" element={<Chart coinId={coinId!} />} />
           </Routes>
         </>
